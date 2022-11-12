@@ -22,3 +22,11 @@ export type RefreshTokenPayload = {
   userId: string;
   tokenId: string;
 };
+
+declare global {
+  namespace Express {
+    export interface Request {
+      payload?: AccessTokenPayload;
+    }
+  }
+}
