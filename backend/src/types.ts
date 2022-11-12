@@ -10,6 +10,12 @@ export type RefreshTokenInfo = {
   userId: string;
 };
 
+export type PostInfo = {
+  title: string;
+  content?: string;
+  userId: string;
+};
+
 export type ErrorResponse = {
   message: string;
 };
