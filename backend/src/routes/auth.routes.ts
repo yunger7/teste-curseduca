@@ -1,18 +1,20 @@
+import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { v4 as uuid } from 'uuid';
 
-import authServices from './auth.services';
-import userServices from '../users/users.services';
-import { generateTokens } from '../../utils/jwt';
-import { hashToken } from '../../utils/hashToken';
+import authServices from '../services/auth.services';
+import userServices from '../services/user.services';
+import { generateTokens } from '../utils/jwt';
+import { hashToken } from '../utils/hashToken';
 
-import type { Request, Response, NextFunction } from 'express';
-import type { UserInfo, RefreshTokenPayload } from '../../types';
+import type { UserInfo, RefreshTokenPayload } from '../types';
 
 const JWT_REFRESH_SECRET = process.env['JWT_REFRESH_SECRET'];
 
-const signup = async (req: Request, res: Response, next: NextFunction) => {
+const router = express.Router();
+
+router.post('/signup', async (req, res, next) => {
   try {
     const { name, email, password } = req.body as Partial<UserInfo>;
 
@@ -46,9 +48,9 @@ const signup = async (req: Request, res: Response, next: NextFunction) => {
   } catch (error) {
     next(error);
   }
-};
+});
 
-const login = async (req: Request, res: Response, next: NextFunction) => {
+router.post('/login', async (req, res, next) => {
   try {
     const { email, password } = req.body as Partial<UserInfo>;
 
@@ -88,13 +90,9 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
   } catch (error) {
     next(error);
   }
-};
+});
 
-const refreshToken = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+router.post('/refreshToken', async (req, res, next) => {
   try {
     const { refreshToken } = req.body as { refreshToken?: string };
 
@@ -155,10 +153,6 @@ const refreshToken = async (
   } catch (err) {
     next(err);
   }
-};
+});
 
-export default {
-  signup,
-  login,
-  refreshToken,
-};
+export default router;

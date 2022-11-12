@@ -1,7 +1,7 @@
-import { database } from '../../utils/database';
-import { hashToken } from '../../utils/hashToken';
+import { database } from '../utils/database';
+import { hashToken } from '../utils/hashToken';
 
-import type { RefreshTokenInfo } from '../../types';
+import type { RefreshTokenInfo } from '../types';
 
 const addRefreshTokenToWhitelist = ({
   id,

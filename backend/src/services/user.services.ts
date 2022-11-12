@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
-import { database } from '../../utils/database';
+import { database } from '../utils/database';
 
-import type { UserInfo } from '../../types';
+import type { UserInfo } from '../types';
 
 const findUserByEmail = (email: string) => {
   return database.user.findUnique({
