@@ -30,9 +30,7 @@ export const App = () => {
         theme={{ ...theme, colorScheme }}
       >
         <Header />
-        <Container size="lg">
-          <Outlet />
-        </Container>
+        <Outlet />
       </MantineProvider>
     </ColorSchemeProvider>
   );
