@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { MantineProvider } from '@mantine/core';
 
-import { Layout } from './pages/Layout';
+import { App } from './App';
 import { Root } from './pages/Root';
 import { Posts } from './pages/Posts';
 import { PostDetails } from './pages/PostDetails';
@@ -12,7 +11,7 @@ import { Error } from './pages/Error';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: <App />,
     errorElement: <Error />,
     children: [
       {
@@ -33,8 +32,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <MantineProvider withGlobalStyles withNormalizeCSS>
-      <RouterProvider router={router} />
-    </MantineProvider>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
