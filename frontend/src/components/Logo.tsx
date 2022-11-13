@@ -16,7 +16,7 @@ export const Logo = (props: LogoProps) => {
   switch (variant) {
     case 'default':
       return (
-        <Group spacing={5}>
+        <Group position="center" spacing={5}>
           <ThemeIcon variant="gradient" size={iconSize}>
             <IconAlien size={iconSize} />
           </ThemeIcon>
@@ -27,7 +27,7 @@ export const Logo = (props: LogoProps) => {
       );
     case 'link':
       return (
-        <Group spacing={5}>
+        <Group position="center" spacing={5}>
           <ActionIcon component={Link} to="/" variant="gradient" size="lg">
             <IconAlien size={iconSize} />
           </ActionIcon>
