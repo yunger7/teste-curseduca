@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
-import { MantineProvider, ColorSchemeProvider, Container } from '@mantine/core';
+import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
 import { useLocalStorage, useHotkeys } from '@mantine/hooks';
+import { NotificationsProvider } from '@mantine/notifications';
 
 import { Header } from './components/Header';
 import { theme } from './styles/theme';
@@ -29,8 +30,10 @@ export const App = () => {
         withNormalizeCSS
         theme={{ ...theme, colorScheme }}
       >
-        <Header />
-        <Outlet />
+        <NotificationsProvider autoClose={4000}>
+          <Header />
+          <Outlet />
+        </NotificationsProvider>
       </MantineProvider>
     </ColorSchemeProvider>
   );
