@@ -5,7 +5,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { App } from './App';
 import { Root } from './pages/Root';
 import { Posts } from './pages/Posts';
-import { PostDetails } from './pages/PostDetails';
 import { Error } from './pages/Error';
 
 const router = createBrowserRouter([
@@ -21,10 +20,6 @@ const router = createBrowserRouter([
       {
         path: '/posts',
         element: <Posts />,
-      },
-      {
-        path: '/posts/:postId',
-        element: <PostDetails />,
       },
     ],
   },
