@@ -33,7 +33,7 @@ export const createAxiosClient = () => {
   client.interceptors.request.use(
     config => {
       if (config.authorization !== false) {
-        const accessToken = localStorage.getItem('invo-access-token');
+        const accessToken = localStorage.getItem('cosmos-access-token');
 
         if (accessToken) {
           if (config.headers) {
@@ -60,14 +60,14 @@ export const createAxiosClient = () => {
       JSON.stringify(originalRequest.headers || {})
     );
 
-    const refreshToken = localStorage.getItem('invo-refresh-token');
+    const refreshToken = localStorage.getItem('cosmos-refresh-token');
 
     const handleError = (error: any) => {
       processQueue(error);
 
-      localStorage.removeItem('invo-access-token');
-      localStorage.removeItem('invo-refresh-token');
-      localStorage.removeItem('invo-user-id');
+      localStorage.removeItem('cosmos-access-token');
+      localStorage.removeItem('cosmos-refresh-token');
+      localStorage.removeItem('cosmos-user-id');
 
       window.location.replace('/');
 
@@ -106,8 +106,8 @@ export const createAxiosClient = () => {
             refreshToken: res.data?.refreshToken,
           };
 
-          localStorage.setItem('invo-access-token', tokens.accessToken);
-          localStorage.setItem('invo-refresh-token', tokens.refreshToken);
+          localStorage.setItem('cosmos-access-token', tokens.accessToken);
+          localStorage.setItem('cosmos-refresh-token', tokens.refreshToken);
           processQueue(null);
 
           return client(originalRequest);

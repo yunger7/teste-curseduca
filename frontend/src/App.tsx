@@ -10,8 +10,8 @@ import type { ColorScheme } from '@mantine/core';
 
 export const App = () => {
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
-    key: 'invo-color-scheme',
-    defaultValue: 'light',
+    key: 'cosmos-color-scheme',
+    defaultValue: 'dark',
     getInitialValueInEffect: true,
   });
 

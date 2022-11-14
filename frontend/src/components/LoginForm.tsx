@@ -34,9 +34,9 @@ export const LoginForm = () => {
         { authorization: false }
       );
 
-      localStorage.setItem('invo-access-token', data.accessToken);
-      localStorage.setItem('invo-refresh-token', data.refreshToken);
-      localStorage.setItem('invo-user-id', data.userId);
+      localStorage.setItem('cosmos-access-token', data.accessToken);
+      localStorage.setItem('cosmos-refresh-token', data.refreshToken);
+      localStorage.setItem('cosmos-user-id', data.userId);
 
       navigate('/posts');
     } catch (error: any) {
@@ -61,7 +61,7 @@ export const LoginForm = () => {
         required
         type="email"
         label="Email"
-        placeholder="bilu@saturno.com"
+        placeholder="laika@saturno.com"
         value={email}
         onChange={e => setEmail(e.target.value)}
       />
@@ -72,7 +72,7 @@ export const LoginForm = () => {
         onChange={e => setPassword(e.target.value)}
       />
       <Button fullWidth type="submit" mt="xl" loading={loading}>
-        Cadastrar
+        Fazer login
       </Button>
     </form>
   );

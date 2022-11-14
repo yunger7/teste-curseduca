@@ -76,7 +76,7 @@ export const Post = ({ post, loading }: PostProps) => {
                 Atualizado em: {new Date(post.updatedAt).toLocaleString()}
               </Text>
             </div>
-            {localStorage.getItem('invo-user-id') === post.userId && (
+            {localStorage.getItem('cosmos-user-id') === post.userId && (
               <Group>
                 <ActionIcon
                   color="grape"

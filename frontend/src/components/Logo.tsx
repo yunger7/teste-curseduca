@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Group, Text, ActionIcon, ThemeIcon } from '@mantine/core';
-import { RiAliensFill as IconAlien } from 'react-icons/ri';
+import { TbPlanet as IconPlanet } from 'react-icons/tb';
 
 import type { MantineSize } from '@mantine/core';
 
@@ -18,10 +18,10 @@ export const Logo = (props: LogoProps) => {
       return (
         <Group position="center" spacing={5}>
           <ThemeIcon variant="gradient" size={iconSize}>
-            <IconAlien size={iconSize} />
+            <IconPlanet size={iconSize} />
           </ThemeIcon>
           <Text fw={700} size={fontSize} ml={4} variant="gradient">
-            I.N.V.O.
+            Cosmos
           </Text>
         </Group>
       );
@@ -29,10 +29,10 @@ export const Logo = (props: LogoProps) => {
       return (
         <Group position="center" spacing={5}>
           <ActionIcon component={Link} to="/" variant="gradient" size="lg">
-            <IconAlien size={iconSize} />
+            <IconPlanet size={iconSize} />
           </ActionIcon>
           <Text fw={700} size={fontSize} ml={4} variant="gradient">
-            I.N.V.O.
+            Cosmos
           </Text>
         </Group>
       );

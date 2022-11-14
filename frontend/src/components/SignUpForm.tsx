@@ -35,9 +35,9 @@ export const SignUpForm = () => {
         { authorization: false }
       );
 
-      localStorage.setItem('invo-access-token', data.accessToken);
-      localStorage.setItem('invo-refresh-token', data.refreshToken);
-      localStorage.setItem('invo-user-id', data.userId);
+      localStorage.setItem('cosmos-access-token', data.accessToken);
+      localStorage.setItem('cosmos-refresh-token', data.refreshToken);
+      localStorage.setItem('cosmos-user-id', data.userId);
 
       navigate('/posts');
     } catch (error) {
@@ -58,7 +58,7 @@ export const SignUpForm = () => {
       <TextInput
         required
         label="Nome"
-        placeholder="E.T. Bilu"
+        placeholder="X Æ A-12"
         value={name}
         onChange={e => setName(e.target.value)}
       />
@@ -66,7 +66,7 @@ export const SignUpForm = () => {
         required
         type="email"
         label="Email"
-        placeholder="bilu@saturno.com"
+        placeholder="armstrong@lua.com"
         value={email}
         onChange={e => setEmail(e.target.value)}
       />

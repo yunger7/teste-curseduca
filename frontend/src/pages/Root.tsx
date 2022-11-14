@@ -55,9 +55,7 @@ export const Root = () => {
         <Card withBorder shadow="xl" p="xl" className={classes.card}>
           <Stack align="center" spacing={0}>
             <Logo iconSize={64} fontSize={34} />
-            <Text mt="xs" ta="center">
-              Rede social para extraterrestres.
-            </Text>
+            <Text mt="xs">Conectando universos.</Text>
           </Stack>
           <Divider my="md" />
           {currentForm === 'signup' ? <SignUpForm /> : <LoginForm />}
