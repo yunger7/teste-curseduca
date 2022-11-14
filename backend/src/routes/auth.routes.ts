@@ -44,6 +44,7 @@ router.post('/signup', async (req, res, next) => {
     res.json({
       accessToken,
       refreshToken,
+      userId: user.id,
     });
   } catch (error) {
     next(error);
@@ -86,6 +87,7 @@ router.post('/login', async (req, res, next) => {
     res.json({
       accessToken,
       refreshToken,
+      userId: user.id,
     });
   } catch (error) {
     next(error);
