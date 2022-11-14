@@ -1,4 +1,5 @@
-import { Card, Text, Badge, Group, Skeleton } from '@mantine/core';
+import { Card, Text, Badge, Group, Skeleton, ActionIcon } from '@mantine/core';
+import { TbEdit as IconEdit, TbTrash as IconDelete } from 'react-icons/tb';
 
 export type PostData = {
   id: string;
@@ -6,6 +7,7 @@ export type PostData = {
   content?: string;
   createdAt: string; // ISO format
   updatedAt: string; // ISO format
+  userId: string;
   user: {
     name: string;
   };
@@ -38,12 +40,26 @@ export const Post = ({ post, loading }: PostProps) => {
           </Badge>
         </Group>
         {post.content && <Text mb="xs">{post.content}</Text>}
-        <Text color="dimmed" size="sm">
-          Criado em: {new Date(post.createdAt).toLocaleString()}
-        </Text>
-        <Text color="dimmed" size="sm">
-          Atualizado em: {new Date(post.updatedAt).toLocaleString()}
-        </Text>
+        <Group position="apart" spacing="xs" sx={{ alignItems: 'flex-end' }}>
+          <div>
+            <Text color="dimmed" size="sm">
+              Criado em: {new Date(post.createdAt).toLocaleString()}
+            </Text>
+            <Text color="dimmed" size="sm">
+              Atualizado em: {new Date(post.updatedAt).toLocaleString()}
+            </Text>
+          </div>
+          {localStorage.getItem('invo-user-id') === post.userId && (
+            <Group>
+              <ActionIcon color="grape" variant="outline">
+                <IconEdit size={18} />
+              </ActionIcon>
+              <ActionIcon color="grape" variant="outline">
+                <IconDelete size={18} />
+              </ActionIcon>
+            </Group>
+          )}
+        </Group>
       </Card>
     );
   }
