@@ -38,9 +38,14 @@ export const isAuthenticated = (
     const token = authorization.split(' ')[1];
     const payload = jwt.verify(token, JWT_ACCESS_SECRET) as AccessTokenPayload;
     req.payload = payload;
-  } catch (error) {
+  } catch (error: any) {
     res.status(401);
-    throw error;
+
+    if (error.name === 'TokenExpiredError') {
+      throw new Error(error.name);
+    }
+
+    throw new Error('Unauthorized');
   }
 
   return next();
