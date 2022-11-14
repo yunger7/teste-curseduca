@@ -10,7 +10,7 @@ export const generateAccessToken = (user: User) => {
   }
 
   return jwt.sign({ userId: user.id }, process.env['JWT_ACCESS_SECRET'] || '', {
-    expiresIn: '15m',
+    expiresIn: '30m',
   });
 };
 
