@@ -67,6 +67,8 @@ export const createAxiosClient = () => {
 
       localStorage.removeItem('invo-access-token');
       localStorage.removeItem('invo-refresh-token');
+      localStorage.removeItem('invo-user-id');
+
       window.location.replace('/');
 
       return Promise.reject(error);

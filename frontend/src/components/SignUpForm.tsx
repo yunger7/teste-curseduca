@@ -10,6 +10,7 @@ import type { FormEvent } from 'react';
 type SignUpAPIResponse = {
   accessToken: string;
   refreshToken: string;
+  userId: string;
 };
 
 const client = createAxiosClient();
@@ -36,6 +37,7 @@ export const SignUpForm = () => {
 
       localStorage.setItem('invo-access-token', data.accessToken);
       localStorage.setItem('invo-refresh-token', data.refreshToken);
+      localStorage.setItem('invo-user-id', data.userId);
 
       navigate('/posts');
     } catch (error) {

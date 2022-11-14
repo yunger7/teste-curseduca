@@ -12,6 +12,7 @@ const client = createAxiosClient();
 type LoginAPIResponse = {
   accessToken: string;
   refreshToken: string;
+  userId: string;
 };
 
 export const LoginForm = () => {
@@ -35,6 +36,7 @@ export const LoginForm = () => {
 
       localStorage.setItem('invo-access-token', data.accessToken);
       localStorage.setItem('invo-refresh-token', data.refreshToken);
+      localStorage.setItem('invo-user-id', data.userId);
 
       navigate('/posts');
     } catch (error: any) {
