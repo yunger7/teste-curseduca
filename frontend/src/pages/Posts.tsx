@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Text, Center, Container } from '@mantine/core';
 
 import { Post, PostData } from '../components/Post';
+import { NewPostButton } from '../components/NewPostButton';
 import { createAxiosClient } from '../services/createAxiosClient';
 
 const client = createAxiosClient();
@@ -65,6 +66,7 @@ export const Posts = () => {
       {posts?.map(post => (
         <Post post={post} key={post.id} />
       ))}
+      <NewPostButton />
     </Container>
   );
 };
