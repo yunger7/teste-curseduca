@@ -43,7 +43,7 @@ export const Posts = () => {
     return (
       <Container size="md" my="xl">
         {[...Array(5)].map((_, i) => (
-          <Post loading />
+          <Post loading key={i} />
         ))}
       </Container>
     );
