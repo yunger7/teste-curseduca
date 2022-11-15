@@ -61,6 +61,19 @@ export const Posts = () => {
     );
   }
 
+  if (posts && posts.length <= 0) {
+    return (
+      <Center sx={{ height: 'calc(100% - 60px)' }}>
+        <Text color="dimmed" align="center">
+          {'(￣﹏￣；)'}
+          <br />
+          Parece que ainda não há nenhum post.
+        </Text>
+        <NewPostButton />
+      </Center>
+    );
+  }
+
   return (
     <Container size="md" my="xl">
       {posts?.map(post => (
