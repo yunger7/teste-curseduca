@@ -4,6 +4,7 @@ import {
   Container,
   Group,
   ActionIcon,
+  Tooltip,
   useMantineColorScheme,
   createStyles,
 } from '@mantine/core';
@@ -57,25 +58,34 @@ export const Header = () => {
       <Container className={classes.container} size="xl">
         <Logo />
         <Group spacing="sm">
-          <ActionIcon
-            variant="default"
-            component="a"
-            href="https://github.com/yunger7/teste-curseduca"
-            target="_blank"
-          >
-            <IconGithub size={18} />
-          </ActionIcon>
-          <ActionIcon variant="default" onClick={() => toggleColorScheme()}>
-            {colorScheme === 'dark' ? (
-              <IconSun size={18} />
-            ) : (
-              <IconMoon size={18} />
-            )}
-          </ActionIcon>
-          {localStorage.getItem('cosmos-user-id') && (
-            <ActionIcon variant="default" onClick={() => logout()}>
-              <IconLogout size={18} />
+          <Tooltip label="GitHub" position="bottom">
+            <ActionIcon
+              variant="default"
+              component="a"
+              href="https://github.com/yunger7/teste-curseduca"
+              target="_blank"
+            >
+              <IconGithub size={18} />
             </ActionIcon>
+          </Tooltip>
+          <Tooltip
+            label={colorScheme === 'dark' ? 'Tema claro' : 'Tema escuro'}
+            position="bottom"
+          >
+            <ActionIcon variant="default" onClick={() => toggleColorScheme()}>
+              {colorScheme === 'dark' ? (
+                <IconSun size={18} />
+              ) : (
+                <IconMoon size={18} />
+              )}
+            </ActionIcon>
+          </Tooltip>
+          {localStorage.getItem('cosmos-user-id') && (
+            <Tooltip label="Sair" position="bottom">
+              <ActionIcon variant="default" onClick={() => logout()}>
+                <IconLogout size={18} />
+              </ActionIcon>
+            </Tooltip>
           )}
         </Group>
       </Container>
