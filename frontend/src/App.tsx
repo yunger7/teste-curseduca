@@ -6,9 +6,14 @@ import { NotificationsProvider } from '@mantine/notifications';
 import { Header } from './components/Header';
 import { theme } from './styles/theme';
 
+import type { ReactNode } from 'react';
 import type { ColorScheme } from '@mantine/core';
 
-export const App = () => {
+type AppProps = {
+  children?: ReactNode;
+};
+
+export const App = ({ children }: AppProps) => {
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: 'cosmos-color-scheme',
     defaultValue: 'dark',
@@ -33,6 +38,7 @@ export const App = () => {
         <NotificationsProvider autoClose={4000}>
           <Header />
           <Outlet />
+          {children}
         </NotificationsProvider>
       </MantineProvider>
     </ColorSchemeProvider>
