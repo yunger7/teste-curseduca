@@ -21,8 +21,14 @@ export const Posts = () => {
 
       try {
         const { data } = await client.get<PostData[]>('/posts');
-        console.log(data);
-        setPosts(data);
+
+        const sortedPosts = data.sort((a, b) => {
+          return (
+            new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+          );
+        });
+
+        setPosts(sortedPosts);
       } catch (error: any) {
         console.log(error);
 
