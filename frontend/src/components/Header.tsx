@@ -55,7 +55,7 @@ export const Header = () => {
   return (
     <MantineHeader className={classes.header} height={60} p="xs">
       <Container className={classes.container} size="xl">
-        <Logo variant="link" />
+        <Logo />
         <Group spacing="sm">
           <ActionIcon
             variant="default"
