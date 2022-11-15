@@ -40,14 +40,25 @@ export const SignUpForm = () => {
       localStorage.setItem('cosmos-user-id', data.userId);
 
       navigate('/posts');
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-      showNotification({
-        title: 'Wops! Parece que alguma coisa deu errado :(',
-        message:
-          'Não foi possível realizar seu cadastro, tente novamente mais tarde.',
-        color: 'red',
-      });
+
+      if (error.name == 'AxiosError' && error.response.status == 403) {
+        showNotification({
+          title: 'Wops! Parece que alguma coisa deu errado :(',
+          message:
+            'Esse email já está registrado, mude o email e tente novamente.',
+          color: 'red',
+          autoClose: 5000,
+        });
+      } else {
+        showNotification({
+          title: 'Wops! Parece que alguma coisa deu errado :(',
+          message:
+            'Não foi possível realizar seu cadastro, tente novamente mais tarde.',
+          color: 'red',
+        });
+      }
     }
 
     setLoading(false);
