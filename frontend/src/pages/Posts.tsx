@@ -41,7 +41,7 @@ export const Posts = () => {
 
   if (loading) {
     return (
-      <Container size="md" my="xl">
+      <Container size="md" py="xl">
         {[...Array(5)].map((_, i) => (
           <Post loading key={i} />
         ))}
@@ -75,7 +75,7 @@ export const Posts = () => {
   }
 
   return (
-    <Container size="md" my="xl">
+    <Container size="md" py="xl">
       {posts?.map(post => (
         <Post post={post} key={post.id} />
       ))}
