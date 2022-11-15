@@ -1,7 +1,7 @@
+import { useNavigate } from 'react-router-dom';
 import {
   Header as MantineHeader,
   Container,
-  Skeleton,
   Group,
   ActionIcon,
   useMantineColorScheme,
@@ -40,8 +40,17 @@ const useStyles = createStyles(theme => ({
 }));
 
 export const Header = () => {
+  const navigate = useNavigate();
   const { classes } = useStyles();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+
+  function logout() {
+    localStorage.removeItem('cosmos-access-token');
+    localStorage.removeItem('cosmos-refresh-token');
+    localStorage.removeItem('cosmos-user-id');
+
+    navigate('/');
+  }
 
   return (
     <MantineHeader className={classes.header} height={60} p="xs">
@@ -63,6 +72,11 @@ export const Header = () => {
               <IconMoon size={18} />
             )}
           </ActionIcon>
+          {localStorage.getItem('cosmos-user-id') && (
+            <ActionIcon variant="default" onClick={() => logout()}>
+              <IconLogout size={18} />
+            </ActionIcon>
+          )}
         </Group>
       </Container>
     </MantineHeader>
